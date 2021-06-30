@@ -1,0 +1,64 @@
+public class Main {
+  private No primeiro;
+  private No ultimo;
+  private String nomeDaFila;
+  
+  static int cont = 0; 
+  //inserir (metodo enfileirar) contador e criar um metodo para imprimir o contador
+  //para imprimira fila sera necessario percorrer ela com while e utilizando o metodo getDado
+  //Construtor da classe Fila
+  public Main(String nome) {
+    nomeDaFila = nome;
+    
+    // receberão o valor nulo.
+    primeiro = ultimo = null;
+
+  }
+  public Main() {
+    
+    nomeDaFila = "Fila Teste";
+    primeiro = ultimo = null;
+
+  }
+  public void Enfileira(String item){
+    cont = cont + 1; 
+    if (Vazia())
+    primeiro = ultimo = new No(item);
+    else {
+      ultimo.setProx(new No(item));
+      ultimo = ultimo.getProx();
+
+    } 
+  }
+  public String Desenfileira() {
+
+    if (Vazia()){
+    return null;
+    }
+    String item = primeiro.getDado();
+
+    if (primeiro == ultimo)
+    primeiro = ultimo = null;
+
+    else
+    primeiro = primeiro.getProx();
+    return item;
+  }
+  public boolean Vazia() {
+    return primeiro == null;
+  }
+  public String ExibePrimeiro() {
+    return primeiro.getDado();
+  }
+  public int cont(){
+    return cont;  
+  }
+  public static void main(String[] args) {
+    Main f1 = new Main();
+    f1.Enfileira("elO1"); 
+    f1.Enfileira("elO2");   
+    System.out.println(f1.ExibePrimeiro() ); 
+    System.out.println(f1.cont()); 
+    
+  }
+}  
